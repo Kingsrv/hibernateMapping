@@ -1,5 +1,7 @@
 package com.hibernate.oneToMany.service;
 
+import com.hibernate.oneToMany.entity.StudentManyToOne;
+import com.hibernate.oneToMany.repository.StudentManyToOneRepository;
 import com.hibernate.oneToOne.entity.Student;
 import com.hibernate.oneToOne.repository.StudentRepository;
 import com.hibernate.oneToOne.service.StudentService;
@@ -12,15 +14,15 @@ import java.util.List;
 public class StudentManyToOneServiceImpl implements StudentManyToOneService {
 
     @Autowired
-    private StudentRepository studentRepository;
+    private StudentManyToOneRepository studentRepository;
 
     @Override
-    public Student addStudent(Student student) {
+    public StudentManyToOne addStudent(StudentManyToOne student) {
         return studentRepository.save(student);
     }
 
     @Override
-    public List<Student> getStudent() {
+    public List<StudentManyToOne> getStudent() {
         return null;
     }
 }

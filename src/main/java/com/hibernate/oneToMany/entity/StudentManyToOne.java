@@ -1,5 +1,6 @@
 package com.hibernate.oneToMany.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.hibernate.oneToOne.entity.Laptop;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -46,10 +47,8 @@ public class StudentManyToOne {
     to overcome this we should use the CASCADE feature.
      */
 
-//    @OneToOne
-    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
-    private Laptop laptop;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Address> addressList;
 }

@@ -1,9 +1,7 @@
 package com.hibernate.oneToOne.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,9 +20,15 @@ public class Laptop {
     private String modelName;
     private String modelNumber;
 
-    @OneToOne
-    private Student student;
+    /*
+    we are considering student as the parent class here because there will be no foreign key of laptop in
+    student table, thus we have to annotate the student in the child class with @JsonManagedReference
+    and the laptop in the parent class with @JsonBackedReference which will prevent the infinite loop
+    while post and get calls.
+     */
 
-    private String sId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Student student;
 
 }

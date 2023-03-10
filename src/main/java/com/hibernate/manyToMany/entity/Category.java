@@ -1,5 +1,6 @@
 package com.hibernate.manyToMany.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.hibernate.manyToMany.entity.Product;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ public class Category {
     private String title;
 
     @ManyToMany(mappedBy = "categoryList",cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Product> productList;
 
 

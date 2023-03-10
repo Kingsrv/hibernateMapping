@@ -14,6 +14,6 @@ public class LaptopServiceImpl implements LaptopService {
 
     @Override
     public Laptop addLaptop(Laptop laptop) {
-        return null;
+        return laptopRepository.save(laptop);
     }
 }

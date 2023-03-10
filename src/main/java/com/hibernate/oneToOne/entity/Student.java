@@ -1,10 +1,11 @@
 package com.hibernate.oneToOne.entity;
 
-import com.hibernate.oneToMany.entity.Address;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.*;
-
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "student")
@@ -45,8 +46,7 @@ public class Student {
 
 //    @OneToOne
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    @JsonBackReference
     private Laptop laptop;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    private List<Address> addressList;
 }

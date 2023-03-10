@@ -1,5 +1,7 @@
 package com.hibernate.oneToMany.controller;
 
+import com.hibernate.oneToMany.entity.StudentManyToOne;
+import com.hibernate.oneToMany.service.StudentManyToOneServiceImpl;
 import com.hibernate.oneToOne.entity.Student;
 import com.hibernate.oneToOne.service.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class StudentControllerManyToOne {
 
     @Autowired
-    private StudentServiceImpl studentService;
+    private StudentManyToOneServiceImpl studentService;
 
 
     @PostMapping
-    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+    public ResponseEntity<StudentManyToOne> addStudent(@RequestBody StudentManyToOne student) {
         return ResponseEntity.status(HttpStatus.CREATED).body(studentService.addStudent(student));
     }
 

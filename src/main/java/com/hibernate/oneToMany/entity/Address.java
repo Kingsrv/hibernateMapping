@@ -1,5 +1,6 @@
 package com.hibernate.oneToMany.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hibernate.oneToOne.entity.Student;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ public class Address {
     private long zipCode;
     private String country;
 
-    @ManyToOne
-    private Student student;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private StudentManyToOne student;
 }
