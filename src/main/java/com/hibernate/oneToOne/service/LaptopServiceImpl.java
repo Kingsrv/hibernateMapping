@@ -6,6 +6,8 @@ import com.hibernate.oneToOne.service.LaptopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LaptopServiceImpl implements LaptopService {
 
@@ -15,5 +17,9 @@ public class LaptopServiceImpl implements LaptopService {
     @Override
     public Laptop addLaptop(Laptop laptop) {
         return laptopRepository.save(laptop);
+    }
+    @Override
+    public List<Laptop> getLaptop(){
+        return laptopRepository.findAll();
     }
 }

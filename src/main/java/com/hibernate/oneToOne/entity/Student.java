@@ -44,7 +44,6 @@ public class Student {
     to overcome this we should use the CASCADE feature.
      */
 
-//    @OneToOne
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     @JsonBackReference
     private Laptop laptop;
